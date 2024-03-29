@@ -1,0 +1,92 @@
+import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+
+const EndGameDialog = ({resultText, isOpen, onClickYes, onClickNo}) => {
+  return (
+    <Modal
+        animationType="fade"
+        transparent={true}
+        visible={isOpen}
+    >
+        <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+                <Text style={styles.modalTitle}>
+                    {resultText}
+                </Text>
+                <Text style={styles.modalText}>
+                    {'Deseja jogar novamente?'}
+                </Text>
+                <View style={{flexDirection: 'row', justifyContent: 'space-around', gap: '30px'}}>
+                  <Pressable
+                      style={[styles.button, styles.buttonYes]}
+                      onPress={onClickYes}
+                  >
+                      <Text style={styles.buttonText}>
+                          Sim
+                      </Text>
+                  </Pressable>
+                  <Pressable
+                      style={[styles.button, styles.buttonNo]}
+                      onPress={onClickNo}
+                  >
+                      <Text style={styles.buttonText}>
+                          Não
+                      </Text>
+                  </Pressable>
+                </View>
+            </View>
+        </View>
+    </Modal>
+  );
+};
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'red',
+    borderWidth: 5,
+    borderColor: 'black',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 5,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonYes: {
+    backgroundColor: 'white',
+  },
+  buttonNo: {
+    backgroundColor: 'black',
+  },
+  buttonText: {
+    color: 'red',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: 'bold',
+  },
+  modalTitle: {
+    marginBottom: 15,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'black',
+    textTransform: 'uppercase',
+  },
+});
+
+export default EndGameDialog;
